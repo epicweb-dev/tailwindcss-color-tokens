@@ -1,14 +1,12 @@
-import fs from 'fs'
 import path from 'node:path'
-import { spawn } from 'child_process'
 import fsExtra from 'fs-extra'
 import { $ } from 'execa'
 import {
 	getApps,
 	isProblemApp,
 	setPlayground,
-} from '@kentcdodds/workshop-app/apps.server'
-import { getWatcher } from '@kentcdodds/workshop-app/change-tracker'
+} from '@kentcdodds/workshop-utils/apps.server'
+import { getWatcher } from '@kentcdodds/workshop-utils/change-tracker.server'
 
 // getApps expects this env var
 process.env.NODE_ENV = 'development'

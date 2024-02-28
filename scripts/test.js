@@ -1,14 +1,13 @@
 // This should run by node without any dependencies
 // because you may need to run it without deps.
 
-import fs from 'fs'
 import path from 'node:path'
 import { spawn } from 'child_process'
 import {
 	getApps,
 	isExampleApp,
 	isSolutionApp,
-} from '@kentcdodds/workshop-app/apps.server'
+} from '@kentcdodds/workshop-utils/apps.server'
 
 const styles = {
 	// got these from playing around with what I found from:
