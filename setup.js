@@ -1,1 +1,1 @@
-import './scripts/setup.js'
+import './kcdshop/setup.js'
