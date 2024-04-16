@@ -4,6 +4,7 @@
     "start": "cd .. && npm start"
   },
   "dependencies": {
-    "@kentcdodds/workshop-app": "^3.12.2"
+    "@epic-web/workshop-app": "^4.0.0",
+    "@epic-web/workshop-utils": "^4.0.0"
   }
 }
