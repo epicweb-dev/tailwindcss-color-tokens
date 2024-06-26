@@ -3,7 +3,13 @@
   "private": true,
   "epicshop": {
     "title": "Workshop Title",
-    "githubRoot": "https://github.com/epicweb-dev/workshop-template/blob/main"
+    "subtitle": "",
+    "githubRoot": "https://github.com/epicweb-dev/workshop-template/blob/main",
+    "instructor": {
+      "name": "Some instructor",
+      "avatar": "/images/instructor.png",
+      "𝕏": "your_x_handle_here"
+    }
   },
   "type": "module",
   "scripts": {
