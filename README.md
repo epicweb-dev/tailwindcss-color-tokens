@@ -1,5 +1,5 @@
 <div>
-  <h1 align="center"><a href="https://www.epicweb.dev/workshops">Workshop Title</a></h1>
+  <h1 align="center"><a href="https://www.epicweb.dev/workshops">Workshop Title 🎃</a></h1>
   <strong>
     Workshop subtitle
   </strong>

@@ -2,7 +2,7 @@
   "name": "workshop-template",
   "private": true,
   "epicshop": {
-    "title": "Workshop Title",
+    "title": "Workshop Title 🎃",
     "subtitle": "Workshop subtitle",
     "githubRoot": "https://github.com/epicweb-dev/workshop-template/blob/main",
     "instructor": {
