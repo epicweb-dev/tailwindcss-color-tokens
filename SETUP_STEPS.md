@@ -15,7 +15,7 @@
 1. Update the workshop summary in the `README.md`
 1. Update the Prerequisites, pre-workshop resources, and if necessary system
    requirements in the `README.md`
-1. Update instructor details in `package.json`
+1. Update `epicshop.instructor` and `author` properties in `package.json`
 1. Update the `public/images/instructor.png` with your own image
 1. Update all dependencies
    ```sh
