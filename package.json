@@ -3,7 +3,7 @@
   "private": true,
   "epicshop": {
     "title": "Workshop Title",
-    "subtitle": "",
+    "subtitle": "Workshop subtitle",
     "githubRoot": "https://github.com/epicweb-dev/workshop-template/blob/main",
     "instructor": {
       "name": "Some instructor",
@@ -35,17 +35,17 @@
     "examples/*"
   ],
   "engines": {
-    "node": ">=18",
+    "node": "^18.19.0 || >=20.5.0",
     "npm": ">=8.16.0",
     "git": ">=2.18.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
-    "eslint": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
+    "eslint": "^9.5.0",
     "eslint-plugin-import": "^2.29.1",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2"
   },
   "prettier": {
     "arrowParens": "avoid",
