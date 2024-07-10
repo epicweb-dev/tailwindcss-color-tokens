@@ -1,0 +1,138 @@
+# Theme Configuration in CSS
+
+Our project is already setup with Tailwind CSS v4.
+
+<callout-warning>
+	If you're using vscode, you might want to upgrade the Tailwind CSS
+	Intellisense extension to the "pre-release" version to work with Tailwind v4.
+</callout-warning>
+
+## Tailwind CSS v4 upgrade
+
+1. We've upgraded our Tailwind version and installed the new Tailwind CSS Vite plugin:
+
+<CodeFile file="./package.json" range="17,31" />
+
+2. We've registered the Vite plugin in <InlineFile file="vite.config.ts" />:
+
+<CodeFile file="./vite.config.ts" highlight="1,7" />
+
+3. We've replaced the three `@tailwind` directives in <InlineFile file="src/index.css" /> with a single `@import` statement:
+
+```diff filename=src/index.css
+- @tailwind base;
+- @tailwind components;
+- @tailwind utilities;
++ @import 'tailwindcss';
+```
+
+4. We've deleted the `postcss.config.js` file, which is no longer needed.
+
+<callout-info>
+	We _could_ also delete the`tailwind.config.ts` file, but we're keeping it
+	around for reference of the work we've done.
+</callout-info>
+
+## Porting the theme configuration to CSS
+
+Instead of defining the `backgroundColor`, `borderColor`, and `textColor` objects in the `tailwind.config.ts` file, you're going to register those in CSS directly.
+
+The **GREAT** news is that Tailwind CSS v4 uses CSS Variables as the **primary theme configuration mechanism** — so a lot of our gymnastics between CSS and JS configuration is going to be greatly simplified.
+
+The equivalent of Tailwind config's `theme.extend` in v4 is an `@theme` block in CSS.
+
+The various theme core plugins can be extended (or overriden) by defining CSS variables with a specific naming convention.
+
+<callout-info>
+	Here is a [complete list of the CSS variable
+	names](https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/theme.css)
+	for the `@theme` definition.
+</callout-info>
+<callout-info>
+	The Tailwind Intellisense extension should give you autocomplete suggestions
+	as you start typing `--` inside the `@theme` block.
+</callout-info>
+
+## 1. Move semantic token definition to the `@theme` block
+
+Keep the raw color tokens in the `@layer base` for now (we'll address this later).
+
+Take the semantic tokens CSS variables in your CSS file, and move theme outside of the `@layer base`, and into a new `@theme` block:
+
+```css filename=src/index.css
+@layer base {
+	:root {
+		/* raw color tokens (`--color-grey-0`, etc ) */
+	}
+}
+
+@theme {
+	--background-color-neutral: var(--color-grey-0);
+	/* ... */
+}
+```
+
+<callout-warning>Note that the CSS variable name hase changed from `--color-bg-neutral` to `--background-color-neutral`! This is to accomodate for the `@theme` naming convention.</callout-warning>
+
+Here's a list of the tokens you need to move:
+
+```css
+/* Semantic tokens */
+--color-bg-highlight: var(--color-highlight);
+--color-bg-accent: var(--color-accent);
+
+--color-bg-neutral: var(--color-grey-0);
+--color-bg-neutral-inverted: var(--color-grey-100);
+--color-bg-subtle: var(--color-grey-5);
+--color-bg-bold: var(--color-grey-80);
+
+--color-border-bold: var(--color-grey-60);
+--color-border-subtle: var(--color-grey-40);
+--color-border-muted: var(--color-grey-20);
+
+--color-text-copy: var(--color-grey-100);
+--color-text-subtle: var(--color-grey-60);
+--color-text-muted: var(--color-grey-40);
+--color-text-inverted: var(--color-grey-5);
+```
+
+Make sure all the semantic color tokens are moved to the `@theme` and re-named accordingly.
+
+<callout-warning>
+	**Warning**: Doing this will not _replace the default Tailwind colors, but
+	rather extend them.
+</callout-warning>
+
+Remember: we want to _override_ the default theme `colors`. Here's the way to do this in the `@theme`:
+
+```css filename=src/index.css
+@theme {
+	--color-*: initial;
+}
+```
+
+- `color-*` targets **all** `color` variables in the theme.
+- `initial` clears those variables.
+
+Effectively the equivalent of doing `theme.colors = {}` in the Tailiwnd config.
+
+## 2. Rename `dark` and `theme` CSS variables to mirror the `@theme` CSS variables
+
+The `@theme` variables become the new `:root` scope CSS variables for our project. Anywhere you redefine those variables (`dark`, `data-theme-"citrus"`) needs to be updated to reflect the new naming convention.
+
+## 3. Use the full color syntax, not `H` `S` `L` channels
+
+All the complexity of composing a color with Tailwind's internal `<alpha-value>` goes away`. You can just pass the full color (`HSL` in our case) to the CSS variable.
+
+Update all CSS variables that use `H` `S` `L` channels to use the full `HSL` color syntax:
+
+```diff filename=src/index.css
+@layer base {
+	:root {
+-		--color-highlight: 173 100% 50%;
++		--color-highlight: hsl(173 100% 50%);
+	}
+}
+```
+
+If you've done everything right — the UI should once again have the correct colors for both themes, in both light and dark modes.

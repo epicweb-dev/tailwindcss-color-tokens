@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-*: initial;
+
+	--background-color-highlight: #00ffe1;
+	--background-color-accent: #6200ff;
+
+	--background-color-neutral: #ffffff;
+	--background-color-neutral-inverted: #000000;
+	--background-color-subtle: #ebebeb;
+	--background-color-bold: #303030;
+
+	--border-color-bold: #616161;
+	--border-color-subtle: #919191;
+	--border-color-muted: #c2c2c2;
+
+	--text-color-copy: #000000;
+	--text-color-subtle: #616161;
+	--text-color-muted: #919191;
+	--text-color-inverted: #ebebeb;
+}
+
+@layer base {
+	.dark {
+		--background-color-highlight: #009987;
+		--background-color-accent: #a166ff;
+
+		--background-color-neutral: #000000;
+		--background-color-neutral-inverted: #ffffff;
+		--background-color-subtle: #313131;
+		--background-color-bold: #ebebeb;
+
+		--border-color-bold: #919191;
+		--border-color-subtle: #616161;
+		--border-color-muted: #313131;
+
+		--text-color-copy: #ffffff;
+		--text-color-subtle: #919191;
+		--text-color-muted: #616161;
+		--text-color-inverted: #181818;
+	}
+
+	[data-theme='citrus'] {
+		--background-color-highlight: #ffff00;
+		--background-color-accent: #ff8000;
+	}
+
+	[data-theme='citrus'].dark {
+		--background-color-highlight: #999900;
+		--background-color-accent: #ffb366;
+	}
+}

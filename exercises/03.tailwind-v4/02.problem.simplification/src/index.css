@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/*
+	🐨 1. Convert all `hsl()` colors to `HEX` color values
+*/
+
+@layer base {
+	:root {
+		/* Raw color accessors */
+		--color-highlight: hsl(173 100% 50%);
+		--color-accent: hsl(263 100% 50%);
+
+		--color-grey-0: hsl(0 0% 100%);
+		--color-grey-5: hsl(0 0% 92%);
+		--color-grey-10: hsl(0 0% 85%);
+		--color-grey-20: hsl(0 0% 76%);
+		--color-grey-30: hsl(0 0% 67%);
+		--color-grey-40: hsl(0 0% 57%);
+		--color-grey-50: hsl(0 0% 47%);
+		--color-grey-60: hsl(0 0% 38%);
+		--color-grey-70: hsl(0 0% 29%);
+		--color-grey-80: hsl(0 0% 19%);
+		--color-grey-90: hsl(0 0% 9%);
+		--color-grey-100: hsl(0 0% 0%);
+	}
+
+	/*
+		🐨 2a. Skip the "semantic color => raw color" mapping,
+		consume the hex color directly instead!
+	*/
+
+	.dark {
+		--background-color-neutral: var(--color-grey-100);
+		--background-color-neutral-inverted: var(--color-grey-0);
+		--background-color-subtle: var(--color-grey-80);
+		--background-color-bold: var(--color-grey-5);
+
+		--background-color-highlight: hsl(173 100% 30%);
+		--background-color-accent: hsl(263 100% 70%);
+
+		--border-color-bold: var(--color-grey-40);
+		--border-color-subtle: var(--color-grey-60);
+		--border-color-muted: var(--color-grey-80);
+
+		--text-color-copy: var(--color-grey-0);
+		--text-color-subtle: var(--color-grey-40);
+		--text-color-muted: var(--color-grey-60);
+		--text-color-inverted: var(--color-grey-90);
+	}
+
+	[data-theme='citrus'] {
+		--background-color-highlight: hsl(60 100% 50%);
+		--background-color-accent: hsl(30 100% 50%);
+	}
+
+	[data-theme='citrus'].dark {
+		--background-color-highlight: hsl(60 100% 30%);
+		--background-color-accent: hsl(30 100% 70%);
+	}
+}
+
+@theme {
+	/* Reset all colors */
+	--color-*: initial;
+
+	/*
+		🐨 2b. Skip the "semantic color => raw color" mapping,
+		consume the hex color directly instead!
+	*/
+
+	/* Semantic tokens */
+	--background-color-neutral: var(--color-grey-0);
+	--background-color-neutral-inverted: var(--color-grey-100);
+	--background-color-subtle: var(--color-grey-5);
+	--background-color-bold: var(--color-grey-80);
+	--background-color-highlight: var(--color-highlight);
+	--background-color-accent: var(--color-accent);
+
+	--border-color-bold: var(--color-grey-60);
+	--border-color-subtle: var(--color-grey-40);
+	--border-color-muted: var(--color-grey-20);
+
+	--text-color-copy: var(--color-grey-100);
+	--text-color-subtle: var(--color-grey-60);
+	--text-color-muted: var(--color-grey-40);
+	--text-color-inverted: var(--color-grey-5);
+}

@@ -1,0 +1,42 @@
+# Custom colors in UI
+
+## 1. Add custom theme colors
+
+Start by extending the Tailwind theme with the raw color tokens.
+
+You can do this in the <InlineFile file="tailwind.config.ts" /> file.
+
+```ts
+export default {
+	theme: {
+		extend: {
+			colors: {
+				// Add the colors here...
+			},
+		},
+	},
+}
+```
+
+There should be 12 new colors added to the theme:
+
+- `highlight`
+- `accent`
+- `grey-0`
+- `grey-5`
+- `grey-10`
+- `grey-20`
+- `grey-30`
+- `grey-40`
+- `grey-50`
+- `grey-60`
+- `grey-70`
+- `grey-80`
+- `grey-90`
+- `grey-100`
+
+## 2. Replace the colors in the UI
+
+Update the UI to use the color tokens to match the design.
+
+Remember, we'll change to semantic design tookens later — but let's get the UI right first with these new colors in place.

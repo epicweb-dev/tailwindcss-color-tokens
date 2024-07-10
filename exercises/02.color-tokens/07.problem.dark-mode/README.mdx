@@ -1,0 +1,92 @@
+# Dark Mode
+
+You've seen that you can change the color values "on the fly" like so:
+
+```tsx
+<Demo style={{ '--color-bg-subtle': '0 0% 19%' }} />
+```
+
+But you don't want to be passing style attributes everytime you want to do that.
+
+Instead, you're going to leverage the "theme scopes" concept you have learned about in previous exercises.
+
+## Dark Mode Support
+
+In this exercise, you're actually going to add support for a fully functional **dark mode** implementation.
+
+And, thanks to the hard work from the previous exercises, this is going to be incredibly easy.
+
+### 1. Enable the `darkMode` "class" strategy in the Tailwind config
+
+In the <InlineFile file="tailwind.config.ts" /> file, add a `darkMode: 'class'` option to the Tailwind config.
+
+```diff
+export default {
+	content: [...],
++	darkMode: 'class',
+	theme: {...}
+```
+
+### 2. Add the `dark` class to the second `<Demo />` component instance
+
+Replace the inline style attribute with a `className` attribute that includes the `dark` class.
+
+```diff
+<>
+ <Demo />
+- <Demo style={{ '--color-bg-subtle': '0 0% 19%' }} />
++ <Demo className="dark" />
+</>
+```
+
+### 3. Redefine the semantic color token CSS variables
+
+In the CSS file's `base` layer block, below the `:root` selector scope, add a new `.dark` selector.
+
+In there, redefine the semantic color tokens by pointing them to different raw color variables.
+
+Here's an example:
+
+```css
+@layer base {
+	:root {
+		/* "base" raw color and semantic color tokens */
+	}
+
+	.dark {
+		--color-bg-subtle: var(--color-grey-80);
+		/* ... */
+	}
+}
+```
+
+The Figma file does not show the dark mode values, but here's a suggestion of how you could map the colors:
+
+| Semantic Token          | Dark Mode Mapping |
+| ----------------------- | ----------------- |
+| `--color-bg-highlight`  | `173 100% 30%;`   |
+| `--color-bg-accent`     | `263 100% 70%;`   |
+| `--color-bg-neutral`    | `grey-100`        |
+| `--color-bg-neutral`    | `grey-0`          |
+| `--color-bg-subtle`     | `grey-80`         |
+| `--color-bg-bold`       | `grey-5`          |
+| `--color-border-bold`   | `grey-40`         |
+| `--color-border-subtle` | `grey-60`         |
+| `--color-border-muted`  | `grey-80`         |
+| `--color-text-copy`     | `grey-0`          |
+| `--color-text-subtle`   | `grey-40`         |
+| `--color-text-muted`    | `grey-60`         |
+| `--color-text-inverted` | `grey-90`         |
+
+<callout-info>
+	Notice that the `highlight` and `accent` colors are not mapped to an existing
+	color token. None of the existing raw color values really work in dark mode,
+	so we've defined new `H` `S` `L` channels. Those are the same colors with a
+	modified `Lightness` for better contrast in dark mode.
+</callout-info>
+
+## Watch it come together
+
+As you redefine the semantic color tokens for `dark` mode, you should see the UI of the second `<Demo />` component come together progressively!
+
+This should be pretty satisfying.

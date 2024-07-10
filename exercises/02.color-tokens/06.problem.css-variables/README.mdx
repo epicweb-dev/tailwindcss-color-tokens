@@ -1,0 +1,254 @@
+# CSS Variables
+
+## TL;DR
+
+This is a big one. You're going to need to do the following:
+
+1. Convert the `HEX` colors to `HSL` or any other color format that supports an _alpha channel_ opacity transparency
+2. Move the colors from the JS file to the CSS file, defined as CSS variables
+3. Recreate the semantic tokens abstraction as CSS variables
+4. Update the Tailwind config file to consume those CSS variables
+
+This piece of work requires a _certain_ understanding of CSS variables, so this page contains a _certain_ amount of theory.
+
+<callout-success class="important">
+	If you want to deep dive into multi-theme strategy with CSS variables and the
+	Tailwind Plugin API, check out the [Multi-Theme
+	Strategy](https://protailwind.com/workshops/multi-theme-strategy) workshop!
+</callout-success>
+
+You'll find detailed instructions for this exercise [after the theory primer](#lets-get-to-work).
+
+---
+
+## "Hardcoded" vs Swappable Color Classes
+
+One of the key reasons we opted to use a semantic naming convention is to detach the color value from the use case.
+
+And why did we do that? So that we can _change_ the color value, without departing from the semantic meaning applied to a specific element.
+
+## CSS variables for the win!
+
+CSS variables are defined with a two-dash prefix `--`, and consumed with the `var()` function.
+
+Here’s an example:
+
+```css
+:root {
+/* CSS var definition */
+--highlight: #00FFE1;
+}
+
+.callout {
+/* CSS var consumption */
+background-color: var(--highlight);
+...;
+}
+```
+
+## Nested CSS variable scopes
+
+A great feature of CSS variables is that they can be **redefined** within any CSS selector.
+
+When doing so, the new value will only take effect within the _scope_ of that selector:
+
+```css
+:root {
+--highlight: #00FFE1;
+}
+
+.callout {
+background-color: var(--highlight);
+...;
+}
+
+.callout--neon {
+/* Redefine the value of an existing CSS variable */
+--highlight: #52FF00;
+}
+```
+
+With that in place, take the following markup:
+
+```html
+<div class="callout">Callout</div>
+<div class="callout callout--neon">Neon callout</div>
+```
+
+Here’s how these two callouts would look like:
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+	<div
+		style={{
+			background: '#00FFE1',
+			padding: '1.5rem',
+			fontSize: '1.3rem',
+			fontWeight: 600,
+		}}
+	>
+		Callout
+	</div>
+	<div
+		style={{
+			background: '#52FF00',
+			padding: '1.5rem',
+			fontSize: '1.3rem',
+			fontWeight: 600,
+		}}
+	>
+		Neon Callout
+	</div>
+</div>
+
+The default callout is using the color value defined at the `:root` scope, while the The Neon callout uses the valued _scoped_ to the `.callout--neon` class.
+
+## That's your theming recipe!
+
+This CSS variable scoping is all you need to understand to know how to setup multiple color themes for a project.
+
+You can create “theme scope” selectors, where you redefine these same CSS variables with new values.
+Any HTML element within a given theme scope will get those updated values when reading on of the CSS variables!
+
+These scopes can be anything: `data-theme="citrus"` for a citrus theme, `.dark` or `@media (prefers-color-scheme: dark)` for dark-mode...
+
+You get the idea — you can get creative with it!
+
+## Tailwind (v3) Opacity Management
+
+Let’s take a look at a `background-color` class for a default Tailwind CSS v3 color, like `bg-indigo-600` for example:
+
+```html
+<p class="bg-indigo-600">I love this color</p>
+```
+
+Here’s the CSS generated for this utility class:
+
+```css
+.bg-indigo-600 {
+	--tw-bg-opacity: 1;
+	background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+```
+
+See that `--tw-bg-opacity` CSS variable? It’s being used to compose the opacity into the background color, which is defined as an `rgb()` color.
+
+### CSS variable composition
+
+By default, this opacity variable is set to `1`, or **full opacity**.
+
+Let’s add a background opacity utilty to our paragraph tag:
+
+```html
+<p class="bg-indigo-600 bg-opacity-50">I love this color</p>
+```
+
+Can you guess what that `bg-opacity-50` class is doing?
+
+Here's the answer:
+
+```css
+.bg-opacity-50 {
+	--tw-bg-opacity: 0.5;
+}
+```
+
+That’s right. It just redefines the value of the `--tw-bg-opacity` variable. It doesn’t apply any CSS property or anything!
+
+Since the opacity utilities are generated _after_ the color utilities in the CSS file, the value of the `--tw-bg-opacity` CSS variable is updated to `0.5`.
+
+As a result, the background color is now a `rgb()` color with a `0.5` **alpha channel**, or 50% opacity!
+
+```diff
+.bg-indigo-600 {
+-  --tw-bg-opacity: 1;
++  --tw-bg-opacity: 0.5;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+```
+
+This is some pretty clever stuff, hopefully opening your eyes to what you can do with CSS variable composition.
+
+Tailwind CSS is full of mind bending CSS variable composition tricks.
+
+## Let's Get To Work!
+
+Feewww — that was a lot of theory! Let's get our hands dirty now.
+
+You'll notice that the main UI has been moved to a <InlineFile file="src/components/demo.tsx">`<Demo />`</InlineFile> component.
+
+It's literally the exact same markup than at the end of the last exercise, with an extra wrapper that spreads props.
+
+That allows us to pass attributes — like `className` or `data-*` attributes — to the component.
+
+Here's what you need to do:
+
+### 1. Convert the `HEX` colors to `HSL` (or other opacity-aware color format)
+
+We need any other color format that supports an _alpha channel_ opacity transparency. You can use a vscode extension or ask AI to help you with that :)
+
+<callout-warning class="important">
+	To make this more complicated, you only need to define the separate channels
+	for the color — not the color itself. Tailwind will [handle the alpha
+	channel](https://tailwindcss.com/docs/customizing-colors#using-css-variables)
+	manually.
+</callout-warning>
+
+If you're using `HSL`, you literally want to store an `${H} ${S} ${L}` string, not the `HSL` color.
+
+Something like `30 100% 50%`.
+
+### 2. Move the colors from the JS file to the CSS file, defined as CSS variables.
+
+Do this at the `:root` scope, in an `@layer base {}` block.
+
+You can name the variables anything you like — but if you need a suggestion, go with this:
+
+```css
+@layer base {
+	:root {
+		--color-highlight: YOUR_COLOR_HERE;
+		--color-grey-0: YOUR_COLOR_HERE;
+		/* ... */
+	}
+}
+```
+
+### 3. Recreate the semantic tokens abstraction as CSS variables
+
+You need to port over the intentional "mapping" of the color tokens to semantic tokens to the CSS file, using CSS variables.
+
+Here's an example that maps the `neutral` semantic color for the `backgroundColor` core plugin to the actual `grey-0` color:
+
+```css
+@layer base {
+	:root {
+		--color-bg-neutral: var(--color-grey-0);
+	}
+}
+```
+
+### 4. Update the Tailwind config file to consume those CSS variables
+
+Finally, you need to update the `backroundColors`, `borderColors` and `textColors` objects used in the `tailwind.config.ts` file to consume the CSS variables you've defined.
+
+### 5. Test the "swappability" of the new color tokens!
+
+Whoaaa — this was a lot. We just want to verify that this was actually useful.
+
+In <InlineFile file="src/App.tsx" />, add a second `<Demo />` component, and try to change the value of a CSS variable with an inline `style` attribute:
+
+```diff
+<>
+  <Demo />
++ <Demo style={{ '--color-bg-subtle': '0 0% 19%' }} />
+</>
+```
+
+This should set the value odf the `--color-bg-subtle` CSS variable to a the `hsl(0 0% 19%)` color — which is technically the `grey-[80]` color.
+
+As a Result, you should see the second `<Demo />` component render with a dark grey background color!
+
+<img
+	src="/images/dark-mode.png"
+	alt="screenshot of a light and dark version of the demo component"
+/>

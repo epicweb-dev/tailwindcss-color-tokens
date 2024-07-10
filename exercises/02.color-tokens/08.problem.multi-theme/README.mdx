@@ -1,0 +1,68 @@
+# Multi-Theme Support
+
+Let's use the exact same approach to add support for multiple color themes — independent of dark mode.
+
+## Add a new theme scope
+
+You're going to add a `citrus` theme to the project.
+
+This theme needs a scope selector, just like you did for `dark` mode.
+
+You could use a `.citrus` class — but there's something nice about using something other than a class selector for a theme toggle.
+
+How about a `data-theme` attribute? That's pretty explicit, right?
+
+### 1. Create a new theme scope selector in CSS
+
+In the <InlineFile file="src/index.css" /> file, add a `[data-theme="citrus"]` selector.
+
+### 2. Redefine semantic color tokens within that scope
+
+You could go crazy and redefine all the color tokens within the `data-theme="citrus"` scope — but for the sake of this exercise, only redefine the `hightlight` and `accent` colors.
+
+Use what you want — but here are two yellow and orange `HSL` color suggestions that feel pretty "citrus-ey":
+
+| Color       | HSL value          |
+| ----------- | ------------------ |
+| `highlight` | `hsl(60 100% 50%)` |
+| `accent`    | `hsl(30 100% 50%)` |
+
+### 3. Add `dark` support for your "citrus" theme
+
+Make sure you also redefine `highlight` and `accent` colors for the scenario where both the `dark` mode and `citrus` theme are active:
+
+```css
+[data-theme='citrus'].dark {
+	/* Dark citrus colors */
+}
+```
+
+<callout-info>
+	**Tip**: Keeping the same color hue (`H`) but changing the lightness (`L`)
+	works pretty well to adjust vibrant colors for dark mode.
+</callout-info>
+
+<callout-warning>
+	**Warning**: Note that this selector above will only work if the `dark` class
+	and the `data-theme="citrus"` attribute are applied to the **same HTML
+	element**.
+</callout-warning>
+
+## Nesting themes and dark mode toggles
+
+If you want to be able to nest and compose combinations of themes and dark mode, consider adding a few parent/child selector combinations:
+
+```css
+/* same element */
+[data-theme='citrus'].dark,
+/* parent <--> child */
+[data-theme='citrus'] .dark,
+/* reverse relationship */
+.dark [data-theme='citrus'] {
+	/* Dark citrus colors */
+}
+```
+
+This will allow you to make any part of your HTML tree dark or light, citrus-themed or not, **independently of anything else** that has been set on parent elements.
+
+And that's the superpower and flexibility of CSS variable scopes 🔥

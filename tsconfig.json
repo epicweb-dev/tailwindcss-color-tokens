@@ -5,10 +5,70 @@
   ],
   "references": [
     {
-      "path": "exercises/01.example/01.problem.hello"
+      "path": "exercises/01.figma-to-tailwind/01.problem.design-implementation"
     },
     {
-      "path": "exercises/01.example/01.solution.goodbye"
+      "path": "exercises/01.figma-to-tailwind/01.solution.design-implementation"
+    },
+    {
+      "path": "exercises/02.color-tokens/01.problem.custom-colors-in-ui"
+    },
+    {
+      "path": "exercises/02.color-tokens/01.solution.custom-colors-in-ui"
+    },
+    {
+      "path": "exercises/02.color-tokens/02.problem.cutoff-default-colors"
+    },
+    {
+      "path": "exercises/02.color-tokens/02.solution.cutoff-default-colors"
+    },
+    {
+      "path": "exercises/02.color-tokens/03.problem.non-colors-support"
+    },
+    {
+      "path": "exercises/02.color-tokens/03.solution.non-colors-support"
+    },
+    {
+      "path": "exercises/02.color-tokens/04.problem.semantic-design-tokens"
+    },
+    {
+      "path": "exercises/02.color-tokens/04.solution.semantic-design-tokens"
+    },
+    {
+      "path": "exercises/02.color-tokens/05.problem.broader-scopes"
+    },
+    {
+      "path": "exercises/02.color-tokens/05.solution.broader-scopes"
+    },
+    {
+      "path": "exercises/02.color-tokens/06.problem.css-variables"
+    },
+    {
+      "path": "exercises/02.color-tokens/06.solution.css-variables"
+    },
+    {
+      "path": "exercises/02.color-tokens/07.problem.dark-mode"
+    },
+    {
+      "path": "exercises/02.color-tokens/07.solution.dark-mode"
+    },
+    {
+      "path": "exercises/02.color-tokens/08.problem.multi-theme"
+    },
+    {
+      "path": "exercises/02.color-tokens/08.solution.multi-theme"
+    },
+    {
+      "path": "exercises/03.tailwind-v4/01.problem.theme-config-in-css"
+    },
+    {
+      "path": "exercises/03.tailwind-v4/01.solution.theme-config-in-css"
+    },
+    {
+      "path": "exercises/03.tailwind-v4/02.problem.simplification"
+    },
+    {
+      "path": "exercises/03.tailwind-v4/02.solution.simplification"
     }
   ]
 }

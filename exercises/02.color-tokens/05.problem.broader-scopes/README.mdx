@@ -1,0 +1,27 @@
+# Broader Scopes
+
+You know how we accidentally broke background transparency in a previous exercise?
+
+Well, we've broken things again, without meaning to.
+
+Here's an example: try make the `highlight` box have a gradient background fading from `highlight` to white (`bg-neutral`):
+
+```html
+<div className="... from-highlight to-neutral bg-gradient-to-r">...</div>
+```
+
+Uuuuh — `from-` and `to-` classes only suggest `inherit`, `current`, and `transparent` as possible values.
+
+Yup. The colors we added to the `backgroundColor` core plugin are only available for... background colors.
+
+## Broaden the scope of where colors are allowed
+
+Background gradient options are controlled by the `gradientColorStops` corePlugin. The background colors should probably be added there too.
+
+What about `outline` or `ring` utilities? Sounds like they should share the `borderColor` options, right?
+
+There is a decent amount of `color`-related [corePlugins in Tailwind](https://tailwindcss.com/docs/theme#configuration-reference). You don't need to add **all** of them in this exercise, but add a few.
+
+And remember this moment — because you'll almost inevitably reach a point where some color somewhere doesn't work, because you've accidentally scoped it too narrowly.
+
+💰 Tip: since you're going to want to share the same color customisations for multiple core plugins, you can create a JS object with the colors to add, and re-use that object multiple times for various corePlugins 🤙

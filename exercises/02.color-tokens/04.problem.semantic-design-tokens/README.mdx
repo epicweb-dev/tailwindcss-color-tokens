@@ -1,0 +1,43 @@
+# Semantic Design Tokens
+
+We've got our colors under control.
+
+Well — actually we still have a problem with the current setup. Nothing is stopping anyone to use the `highlight` color (meant for background surfaces) on a text element, for example.
+
+```html
+<p className="text-highlight ...">Special Deal</p>
+```
+
+<img src="/images/highlight-text-eww.png" />
+
+Ewwww...
+
+What's thaaaat?
+
+😅
+
+I don't think the designers wanted the `highlight` color to be used like that.
+
+## Scope colors to specific use cases
+
+We can lock down the usage of colors to specific scenarios by leveraging Tailwind's `corePlugins`.
+
+The `colors` object makes a color available **everywhere**.
+
+But you can target core plugins like `backgroundColor` to only allow colors to be used for _backgrounds_.
+
+Or `borderColor` for borders, etc.
+
+## Translate the Figma file's Semantic Color Tokens
+
+Recreate the semantic tokens you can find in Figma in your Tailwind theme.
+
+If you can't access the variables panel in Figma, here's a screenshot of the relevant color _mapping_.
+
+<img src="/images/semantic-color-tokens.png" />
+
+## Update the UI to use the new, semantic tokens
+
+Make sure the UI is using the new semantic tokens and still works properly!
+
+You've got this — good luck!

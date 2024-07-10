@@ -1,11 +1,8 @@
 <div>
-  <h1 align="center"><a href="https://www.epicweb.dev/workshops">Workshop Title 🎃</a></h1>
-  <strong>
-    Workshop subtitle
-  </strong>
-  <p>
-    Workshop summary
-  </p>
+  <h1 align="center"><a href="https://www.epicweb.dev/workshops">Tailwind CSS Color Tokens 🎨</a></h1>
+  <strong>Semantic, themable color design tokens in Tailwind CSS</strong>
+  <p>In this workshop, we're going to define semantic color tokens in Tailwind CSS, to adhere to a convention set in a Figma design File.</p>
+  <p>We'll cover both Tailwind CSS v3 and v4 approaches 🔥</p>
 </div>
 
 <hr />
@@ -13,7 +10,7 @@
 <div align="center">
   <a
     alt="Epic Web logo with the words Deployed Version"
-    href="https://epicweb-dev-workshop-template.fly.dev/"
+    href="https://epicweb-dev-tailwindcss-color-tokens.fly.dev/"
   >
     <img
       width="300px"
@@ -32,18 +29,33 @@
 
 ## Prerequisites
 
-- TODO: add prerequisites
-- Some
-- Pre-requisite
-- links
-- here
+### Some experience with Tailwind CSS
+
+This workshop is intended for developers who are already familiar with Tailwind
+CSS.
+
+If you’re not, great free resources to quickly up-skill are the official
+[Tailwind docs](https://tailwindcss/com) and
+[YouTube channel](https://youtube.com/tailwindlabs).
+
+#### Some experience with JavaScript
+
+Basic familiarity with
+[JavaScript](https://kentcdodds.com/blog/javascript-to-know-for-react) and
+[React](https://egghead.io/courses/the-beginner-s-guide-to-react) is also
+beneficial, since we’ll be using a React + Vite app to build our UI.
+
+Again, not critical as the workshops stays firmly focused on CSS.
 
 ## Pre-workshop Resources
 
 Here are some resources you can read before taking the workshop to get you up to
 speed on some of the tools and concepts we'll be covering:
 
-- TODO: add resources
+- The
+  [From Zero to Production](https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0)
+  video series in particular is a great introduction to Tailwind, even if
+  designed for Tailwind v2.
 
 ## System Requirements
 
@@ -79,8 +91,8 @@ network connection before running the setup and grab a snack.
 Follow these steps to get this set up:
 
 ```sh nonumber
-git clone --depth 1 https://github.com/epicweb-dev/workshop-template.git
-cd workshop-template
+git clone --depth 1 https://github.com/epicweb-dev/tailwindcss-color-tokens.git
+cd tailwindcss-color-tokens
 npm run setup
 ```
 
@@ -98,13 +110,13 @@ Learn all about the workshop app on the
 [npm]: https://www.npmjs.com/
 [node]: https://nodejs.org
 [git]: https://git-scm.com/
-[build-badge]: https://img.shields.io/github/actions/workflow/status/epicweb-dev/workshop-template/validate.yml?branch=main&logo=github&style=flat-square
-[build]: https://github.com/epicweb-dev/workshop-template/actions?query=workflow%3Avalidate
+[build-badge]: https://img.shields.io/github/actions/workflow/status/epicweb-dev/tailwindcss-color-tokens/validate.yml?branch=main&logo=github&style=flat-square
+[build]: https://github.com/epicweb-dev/tailwindcss-color-tokens/actions?query=workflow%3Avalidate
 [license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
-[license]: https://github.com/epicweb-dev/workshop-template/blob/main/LICENSE
+[license]: https://github.com/epicweb-dev/tailwindcss-color-tokens/blob/main/LICENSE
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]: https://kentcdodds.com/conduct
 [win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
 [mac-path]: http://stackoverflow.com/a/24322978/971592
-[issue]: https://github.com/epicweb-dev/workshop-template/issues/new
+[issue]: https://github.com/epicweb-dev/tailwindcss-color-tokens/issues/new
 <!-- prettier-ignore-end -->

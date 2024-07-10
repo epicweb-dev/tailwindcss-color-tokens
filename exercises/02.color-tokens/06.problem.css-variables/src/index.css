@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+	🐨 2. Define the 12 colors as CSS variables at 
+ the `:root` scope, inside the `@base` layer.
+*/
+
+/* 
+	🐨 3. Recreate the semantic token abstractions as CSS variables.
+ Those should consume the raw color CSS variables.
+
+ Example: `--color-bg-neutral: var(--color-grey-0);`
+*/

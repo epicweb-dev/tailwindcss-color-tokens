@@ -1,1 +1,52 @@
-# Workshop Title 🎃
+# Tailwind CSS Color Tokens 🎨
+
+In this workshop, we're going to define **semantic color tokens** in Tailwind CSS, to adhere to a convention set in a Figma design File.
+
+We'll cover both Tailwind CSS v3 and v4 approaches 🔥
+
+## The Figma File
+
+<iframe
+	width="100%"
+	height="450"
+	src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FutWvEdksWPfgkx2MsExQu5%2FColor-Tokens%3Fm%3Ddev%26node-id%3D0-1"
+	allowfullscreen
+></iframe>
+
+## Semantic Design Tokens
+
+As you can see in the Figma file, colors are first defined as "raw" color palette values — but there is an extra layer of abstraction that defines **semantic color tokens**.
+
+Those design tokens are scoped to **background**, **text** and **border** colors.
+
+### Multi-Theme Support
+
+The idea behind this layer of design token abstraction: UI elements should not be directly connected to a specific color value — but instead us an aliased reference token.
+
+This unlocks the ability to change an entire design system by changing the color tokens, opening doors to advanced theming strategies.
+
+### Unified Design Language
+
+The semantic naming convention of these tokens also allows teams to better communicate about the design system, and to create a shared design language.
+
+Here's a visual representation of this design token layer, as presented on the [Atlassian Design System](https://atlassian.design/tokens/design-tokens)'s Design Tokens documentation page:
+
+<img src="/images/token-layers.png" />
+
+---
+
+## What this workshop covers
+
+In this workshop, you will...
+
+- Convert a Figma design to a Tailwind CSS project
+- Define custom colors in the Tailwind theme
+- Create a semantic color token layer in the Tailwind theme
+- Replace "hardcoded" colors with semantic color tokens in the UI
+- Leverage CSS variables to make the color tokens themable
+- Support dark mode 🌑 and multiple color themes 🎨
+- Port a JS Tailwind theme configuration (v3) to a CSS-only configuration (v4)
+
+## Let's do this!
+
+We've got plenty to cover. Whenever you're ready — let's dive in 🤿

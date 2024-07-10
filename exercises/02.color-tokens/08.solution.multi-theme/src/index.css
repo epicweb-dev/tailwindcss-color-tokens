@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/* Raw color accessors */
+		--color-highlight: 173 100% 50%;
+		--color-accent: 263 100% 50%;
+
+		--color-grey-0: 0 0% 100%;
+		--color-grey-5: 0 0% 92%;
+		--color-grey-10: 0 0% 85%;
+		--color-grey-20: 0 0% 76%;
+		--color-grey-30: 0 0% 67%;
+		--color-grey-40: 0 0% 57%;
+		--color-grey-50: 0 0% 47%;
+		--color-grey-60: 0 0% 38%;
+		--color-grey-70: 0 0% 29%;
+		--color-grey-80: 0 0% 19%;
+		--color-grey-90: 0 0% 9%;
+		--color-grey-100: 0 0% 0%;
+
+		/* Semantic tokens */
+		--color-bg-highlight: var(--color-highlight);
+		--color-bg-accent: var(--color-accent);
+
+		--color-bg-neutral: var(--color-grey-0);
+		--color-bg-neutral-inverted: var(--color-grey-100);
+		--color-bg-subtle: var(--color-grey-5);
+		--color-bg-bold: var(--color-grey-80);
+
+		--color-border-bold: var(--color-grey-60);
+		--color-border-subtle: var(--color-grey-40);
+		--color-border-muted: var(--color-grey-20);
+
+		--color-text-copy: var(--color-grey-100);
+		--color-text-subtle: var(--color-grey-60);
+		--color-text-muted: var(--color-grey-40);
+		--color-text-inverted: var(--color-grey-5);
+	}
+
+	.dark {
+		--color-bg-highlight: 173 100% 30%;
+		--color-bg-accent: 263 100% 70%;
+
+		--color-bg-neutral: var(--color-grey-100);
+		--color-bg-neutral-inverted: var(--color-grey-0);
+		--color-bg-subtle: var(--color-grey-80);
+		--color-bg-bold: var(--color-grey-5);
+
+		--color-border-bold: var(--color-grey-40);
+		--color-border-subtle: var(--color-grey-60);
+		--color-border-muted: var(--color-grey-80);
+
+		--color-text-copy: var(--color-grey-0);
+		--color-text-subtle: var(--color-grey-40);
+		--color-text-muted: var(--color-grey-60);
+		--color-text-inverted: var(--color-grey-90);
+	}
+
+	[data-theme='citrus'] {
+		--color-bg-highlight: 60 100% 50%;
+		--color-bg-accent: 30 100% 50%;
+	}
+
+	[data-theme='citrus'].dark {
+		--color-bg-highlight: 60 100% 30%;
+		--color-bg-accent: 30 100% 70%;
+	}
+}

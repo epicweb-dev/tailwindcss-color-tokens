@@ -1,4 +1,4 @@
-app = "epicweb-dev-workshop-template"
+app = "epicweb-dev-tailwindcss-color-tokens"
 primary_region = "sjc"
 kill_signal = "SIGINT"
 kill_timeout = 5

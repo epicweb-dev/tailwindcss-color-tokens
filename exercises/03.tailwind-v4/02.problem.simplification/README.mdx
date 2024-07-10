@@ -1,0 +1,122 @@
+# Simplification
+
+All this time, we've been defining CSS variables for raw color tokens, and then set up scoped semantic tokens that reference those raw colors.
+
+It makes sense, that's sort of how the Figma file was setup.
+
+And you know what? We don't really _want_ to actively expose those raw tokens, since we're trying to encourage developers to only use semantic tokens in the UI.
+
+## We can't stop them
+
+**Worth noting:** you won't ever really going to be able to completely stop
+someone from using a raw token value.
+
+Take a look at this:
+
+```html
+<p class="text-[var(--background-color-highlight)]">I am highlight text</p>
+```
+
+That's more of an "escape hatch", and that's okay.
+
+But let's not expose variables called `--color-grey-30` in the root scope, which may make team contributors thing this is meant to be used as a primary styling approach.
+
+## No more opacity management gymnastics
+
+We went back to normal `hsl()` color functions instead of those weird `H` `S` `L` strings — and it felt great.
+
+But remember how we started the project? with `HEX` color values.
+
+Don't get me wrong, `hsl()` is an awesome color format and feel free to keep using it.
+
+But just for the record: in this workshop, we moved from HEX to `hsl()` to be able to have a solution for opacity (alpha-transparency) management.
+
+### Tailwind v4: `color-mix()` FTW
+
+Internally, Tailwind uses `color-mix()` to compose transparency within colors. This means that you can set colors in HEX format (without alpha channels), and opacity will still work.
+
+Try it! Do the following change:
+
+```diff filename=src/index.css
+- --color-highlight: hsl(173 100% 50%);
++ --color-highlight: #00ffe1;
+```
+
+If you then try to add 50% opacity to an element using this `highlight` color as a background, you'll see it works.
+
+And here's the CSS output:
+
+```css
+.bg-highlight\/50 {
+	background-color: color-mix(
+		in srgb,
+		var(--background-color-highlight, var(--color-highlight)) 50%,
+		transparent
+	);
+}
+```
+
+`color-mix()` composing the color with 50% of `transparent` ✨
+
+What that means is ... we can go back to HEX for all our colors, if we want to!
+
+(pretend we do, for this final exercise)
+
+---
+
+## Your Job
+
+### 1. Convert all `hsl()` colors to `HEX` colors in the CSS file.
+
+Again, you can use a vscode extension or AI to complete this task. If all else fails, here are conversion tables, for you to enjoy:
+
+#### Default colors
+
+| Variable name       | HSL color           | HEX color |
+| ------------------- | ------------------- | --------- |
+| `--color-highlight` | `hsl(173 100% 50%)` | `#00FFE1` |
+| `--color-accent`    | `hsl(263 100% 50%)` | `#6200FF` |
+| `--color-grey-0`    | `hsl(0 0% 100%)`    | `#FFFFFF` |
+| `--color-grey-5`    | `hsl(0 0% 92%)`     | `#EBEBEB` |
+| `--color-grey-10`   | `hsl(0 0% 85%)`     | `#DADADA` |
+| `--color-grey-20`   | `hsl(0 0% 76%)`     | `#C2C2C2` |
+| `--color-grey-30`   | `hsl(0 0% 67%)`     | `#AAAAAA` |
+| `--color-grey-40`   | `hsl(0 0% 57%)`     | `#919191` |
+| `--color-grey-50`   | `hsl(0 0% 47%)`     | `#797979` |
+| `--color-grey-60`   | `hsl(0 0% 38%)`     | `#616161` |
+| `--color-grey-70`   | `hsl(0 0% 29%)`     | `#494949` |
+| `--color-grey-80`   | `hsl(0 0% 19%)`     | `#313131` |
+| `--color-grey-90`   | `hsl(0 0% 9%)`      | `#181818` |
+| `--color-grey-100`  | `hsl(0 0% 0%)`      | `#000000` |
+
+#### Themes / Dark mode variations
+
+| Dark mode (default) | HSL color           | HEX color |
+| ------------------- | ------------------- | --------- |
+| `--color-highlight` | `hsl(173 100% 30%)` | `#009987` |
+| `--color-accent`    | `hsl(263 100% 70%)` | `#A166FF` |
+
+| Citrus theme        | HSL color          | HEX color |
+| ------------------- | ------------------ | --------- |
+| `--color-highlight` | `hsl(60 100% 50%)` | `#FFFF00` |
+| `--color-accent`    | `hsl(30 100% 50%)` | `#FF8000` |
+
+| Citrus theme + Dark mode | HSL color          | HEX color |
+| ------------------------ | ------------------ | --------- |
+| `--color-highlight`      | `hsl(60 100% 30%)` | `#999900` |
+| `--color-accent`         | `hsl(30 100% 70%)` | `#FFB366` |
+
+### 2. Skip the `semantic color => raw color` mapping
+
+Replace each instance of semantic tokens referencing a CSS "raw color" variable with a direct use of the HEX color.
+
+Here's an example:
+
+```diff
+- --border-color-muted: var(--color-grey-80)
++ --border-color-muted: #C2C2C2;
+```
+
+### 3. Delete the 12 raw color variables
+
+They're not being used for anything anymore, so go ahead and remove those from the `:root` scope.

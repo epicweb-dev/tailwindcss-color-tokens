@@ -1,0 +1,37 @@
+# "Non colors" support
+
+It might look like everything is working properly — but with our `colors` override, we have accidentally removed some functionality.
+
+For example, try to make the button's background transparent on hover:
+
+```html
+<button className="... hover:bg-transparent">Learn more</button>
+```
+
+If you hover this button, you'd expect the background to become... transparent, right?
+
+Womp Womp. It doesn't work.
+
+### The default colors are more than just _colors_.
+
+The `colors` object in the Tailwind theme contains a few things beside "true" colors.
+
+Go ahead, have a look at the [Tailwind docs (text-color, for example)](https://tailwindcss.com/docs/text-color) to see what's in there.
+
+Yup. `inherit`, `current`, `transparent`.
+
+Well, we've removed all three by overriding the `colors` object.
+
+And that's why our `bg-transparent` class has no effect.
+
+## Bring these back
+
+Make sure these three key-value pairs are also added to the colors object:
+
+```ts
+{
+  inherit: 'inherit',
+  transparent: 'transparent',
+  current: 'currentColor',
+}
+```
