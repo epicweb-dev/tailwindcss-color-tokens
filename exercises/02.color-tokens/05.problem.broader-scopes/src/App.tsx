@@ -15,11 +15,13 @@ export default function ColorDesignTokens() {
 						temporibus aut. Voluptatibus minus nesciunt qui voluptas fugiat
 						voluptate repudiandae error asperiores.
 					</p>
-					<div className="flex gap-2">
-						<button className="bg-bold hover:bg-neutral-inverted text-inverted mt-6 rounded px-4 py-2 text-sm font-medium">
-							Learn more
-						</button>
-					</div>
+
+					<a
+						href="#"
+						className="bg-bold hover:bg-neutral-inverted text-inverted mt-6 inline-block rounded px-4 py-2 text-sm font-medium"
+					>
+						Learn more
+					</a>
 				</div>
 				<div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
 					<div className="bg-highlight grid place-items-center rounded px-8 py-12">

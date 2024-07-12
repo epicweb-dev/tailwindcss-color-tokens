@@ -24,12 +24,14 @@ export default function ColorDesignTokens() {
 						temporibus aut. Voluptatibus minus nesciunt qui voluptas fugiat
 						voluptate repudiandae error asperiores.
 					</p>
-					<div className="flex gap-2">
-						{/* 👀 */}
-						<button className="mt-6 rounded bg-black px-4 py-2 text-sm font-medium text-white">
-							Learn more
-						</button>
-					</div>
+
+					{/* 👀 */}
+					<a
+						href="#"
+						className="mt-6 inline-block rounded bg-black px-4 py-2 text-sm font-medium text-white"
+					>
+						Learn more
+					</a>
 				</div>
 				<div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
 					{/* 👀 */}
