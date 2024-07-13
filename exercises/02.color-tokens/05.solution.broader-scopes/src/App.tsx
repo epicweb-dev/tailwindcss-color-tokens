@@ -1,6 +1,6 @@
 export default function ColorDesignTokens() {
 	return (
-		<div className="bg-subtle py-6 sm:py-12">
+		<div className="bg-subtle min-h-screen py-6 sm:py-12">
 			<div className="mx-auto max-w-4xl p-6 sm:p-8">
 				<div className="bg-neutral border-muted rounded border p-6 sm:p-8">
 					<p className="text-muted text-xs font-semibold uppercase tracking-widest">

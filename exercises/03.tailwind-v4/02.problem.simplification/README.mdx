@@ -38,8 +38,8 @@ Internally, Tailwind uses `color-mix()` to compose transparency within colors. T
 Try it! Do the following change:
 
 ```diff filename=src/index.css
-- --color-highlight: hsl(173 100% 50%);
-+ --color-highlight: #00ffe1;
+- --color-teal: hsl(173 100% 50%);
++ --color-teal: #00ffe1;
 ```
 
 If you then try to add 50% opacity to an element using this `highlight` color as a background, you'll see it works.
@@ -50,7 +50,7 @@ And here's the CSS output:
 .bg-highlight\/50 {
 	background-color: color-mix(
 		in srgb,
-		var(--background-color-highlight, var(--color-highlight)) 50%,
+		var(--background-color-highlight, var(--color-teal)) 50%,
 		transparent
 	);
 }
@@ -72,39 +72,39 @@ Again, you can use a vscode extension or AI to complete this task. If all else f
 
 #### Default colors
 
-| Variable name       | HSL color           | HEX color |
-| ------------------- | ------------------- | --------- |
-| `--color-highlight` | `hsl(173 100% 50%)` | `#00FFE1` |
-| `--color-accent`    | `hsl(263 100% 50%)` | `#6200FF` |
-| `--color-grey-0`    | `hsl(0 0% 100%)`    | `#FFFFFF` |
-| `--color-grey-5`    | `hsl(0 0% 92%)`     | `#EBEBEB` |
-| `--color-grey-10`   | `hsl(0 0% 85%)`     | `#DADADA` |
-| `--color-grey-20`   | `hsl(0 0% 76%)`     | `#C2C2C2` |
-| `--color-grey-30`   | `hsl(0 0% 67%)`     | `#AAAAAA` |
-| `--color-grey-40`   | `hsl(0 0% 57%)`     | `#919191` |
-| `--color-grey-50`   | `hsl(0 0% 47%)`     | `#797979` |
-| `--color-grey-60`   | `hsl(0 0% 38%)`     | `#616161` |
-| `--color-grey-70`   | `hsl(0 0% 29%)`     | `#494949` |
-| `--color-grey-80`   | `hsl(0 0% 19%)`     | `#313131` |
-| `--color-grey-90`   | `hsl(0 0% 9%)`      | `#181818` |
-| `--color-grey-100`  | `hsl(0 0% 0%)`      | `#000000` |
+| Variable name      | HSL color           | HEX color |
+| ------------------ | ------------------- | --------- |
+| `--color-teal`     | `hsl(173 100% 50%)` | `#00FFE1` |
+| `--color-purple`   | `hsl(263 100% 50%)` | `#6200FF` |
+| `--color-grey-0`   | `hsl(0 0% 100%)`    | `#FFFFFF` |
+| `--color-grey-5`   | `hsl(0 0% 92%)`     | `#EBEBEB` |
+| `--color-grey-10`  | `hsl(0 0% 85%)`     | `#DADADA` |
+| `--color-grey-20`  | `hsl(0 0% 76%)`     | `#C2C2C2` |
+| `--color-grey-30`  | `hsl(0 0% 67%)`     | `#AAAAAA` |
+| `--color-grey-40`  | `hsl(0 0% 57%)`     | `#919191` |
+| `--color-grey-50`  | `hsl(0 0% 47%)`     | `#797979` |
+| `--color-grey-60`  | `hsl(0 0% 38%)`     | `#616161` |
+| `--color-grey-70`  | `hsl(0 0% 29%)`     | `#494949` |
+| `--color-grey-80`  | `hsl(0 0% 19%)`     | `#313131` |
+| `--color-grey-90`  | `hsl(0 0% 9%)`      | `#181818` |
+| `--color-grey-100` | `hsl(0 0% 0%)`      | `#000000` |
 
 #### Themes / Dark mode variations
 
 | Dark mode (default) | HSL color           | HEX color |
 | ------------------- | ------------------- | --------- |
-| `--color-highlight` | `hsl(173 100% 30%)` | `#009987` |
-| `--color-accent`    | `hsl(263 100% 70%)` | `#A166FF` |
+| `--color-teal`      | `hsl(173 100% 30%)` | `#009987` |
+| `--color-purple`    | `hsl(263 100% 70%)` | `#A166FF` |
 
-| Citrus theme        | HSL color          | HEX color |
-| ------------------- | ------------------ | --------- |
-| `--color-highlight` | `hsl(60 100% 50%)` | `#FFFF00` |
-| `--color-accent`    | `hsl(30 100% 50%)` | `#FF8000` |
+| Citrus theme     | HSL color          | HEX color |
+| ---------------- | ------------------ | --------- |
+| `--color-teal`   | `hsl(60 100% 50%)` | `#FFFF00` |
+| `--color-purple` | `hsl(30 100% 50%)` | `#FF8000` |
 
 | Citrus theme + Dark mode | HSL color          | HEX color |
 | ------------------------ | ------------------ | --------- |
-| `--color-highlight`      | `hsl(60 100% 30%)` | `#999900` |
-| `--color-accent`         | `hsl(30 100% 70%)` | `#FFB366` |
+| `--color-teal`           | `hsl(60 100% 30%)` | `#999900` |
+| `--color-purple`         | `hsl(30 100% 70%)` | `#FFB366` |
 
 ### 2. Skip the `semantic color => raw color` mapping
 
@@ -117,6 +117,6 @@ Here's an example:
 + --border-color-muted: #C2C2C2;
 ```
 
-### 3. Delete the 12 raw color variables
+### 3. Delete the 14 raw color variables
 
 They're not being used for anything anymore, so go ahead and remove those from the `:root` scope.

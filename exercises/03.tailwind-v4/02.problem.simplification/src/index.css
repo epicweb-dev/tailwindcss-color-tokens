@@ -7,8 +7,8 @@
 @layer base {
 	:root {
 		/* Raw color accessors */
-		--color-highlight: hsl(173 100% 50%);
-		--color-accent: hsl(263 100% 50%);
+		--color-teal: hsl(173 100% 50%);
+		--color-purple: hsl(263 100% 50%);
 
 		--color-grey-0: hsl(0 0% 100%);
 		--color-grey-5: hsl(0 0% 92%);
@@ -73,8 +73,8 @@
 	--background-color-neutral-inverted: var(--color-grey-100);
 	--background-color-subtle: var(--color-grey-5);
 	--background-color-bold: var(--color-grey-80);
-	--background-color-highlight: var(--color-highlight);
-	--background-color-accent: var(--color-accent);
+	--background-color-highlight: var(--color-teal);
+	--background-color-accent: var(--color-purple);
 
 	--border-color-bold: var(--color-grey-60);
 	--border-color-subtle: var(--color-grey-40);

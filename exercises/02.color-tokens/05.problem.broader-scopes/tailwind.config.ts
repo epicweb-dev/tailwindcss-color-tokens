@@ -1,8 +1,8 @@
 import { type Config } from 'tailwindcss'
 
 const colors = {
-	highlight: '#00FFE1',
-	accent: '#6200FF',
+	teal: '#00FFE1',
+	purple: '#6200FF',
 	grey: {
 		0: '#FFFFFF',
 		5: '#EBEBEB',
@@ -39,8 +39,8 @@ export default {
 				objects, applied to multiple core plugins.
 			*/
 			backgroundColor: {
-				highlight: colors.highlight,
-				accent: colors.accent,
+				highlight: colors.teal,
+				accent: colors.purple,
 				neutral: {
 					DEFAULT: colors.grey['0'],
 					inverted: colors.grey['100'],

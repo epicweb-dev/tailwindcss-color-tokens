@@ -78,8 +78,8 @@ Here's a list of the tokens you need to move:
 
 ```css
 /* Semantic tokens */
---color-bg-highlight: var(--color-highlight);
---color-bg-accent: var(--color-accent);
+--color-bg-highlight: var(--color-teal);
+--color-bg-accent: var(--color-purple);
 
 --color-bg-neutral: var(--color-grey-0);
 --color-bg-neutral-inverted: var(--color-grey-100);
@@ -129,8 +129,8 @@ Update all CSS variables that use `H` `S` `L` channels to use the full `HSL` col
 ```diff filename=src/index.css
 @layer base {
 	:root {
--		--color-highlight: 173 100% 50%;
-+		--color-highlight: hsl(173 100% 50%);
+-		--color-teal: 173 100% 50%;
++		--color-teal: hsl(173 100% 50%);
 	}
 }
 ```

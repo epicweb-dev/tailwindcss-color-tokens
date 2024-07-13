@@ -6,8 +6,8 @@ import { type Config } from 'tailwindcss'
 	(steps 2 and 3 happen in the `src/index.css` file)
 */
 const colors = {
-	highlight: '#00FFE1',
-	accent: '#6200FF',
+	teal: '#00FFE1',
+	purple: '#6200FF',
 	grey: {
 		0: '#FFFFFF',
 		5: '#EBEBEB',
@@ -31,8 +31,8 @@ const colors = {
 	Example: `highlight: 'hsl(var(--color-bg-highlight) / <alpha-value>)'`
 */
 const backgroundColors = {
-	highlight: colors.highlight,
-	accent: colors.accent,
+	highlight: colors.teal,
+	accent: colors.purple,
 	neutral: {
 		DEFAULT: colors.grey['0'],
 		inverted: colors.grey['100'],

@@ -4,7 +4,7 @@ export default function ColorDesignTokens() {
 	// 💰 I've put an 👀 emoji above the elements that need attention!
 	return (
 		// 👀
-		<div className="bg-grey-5 py-6 sm:py-12">
+		<div className="bg-grey-5 min-h-screen py-6 sm:py-12">
 			<div className="mx-auto max-w-4xl p-6 sm:p-8">
 				{/* 👀 */}
 				<div className="bg-grey-0 border-grey-20 rounded border p-6 sm:p-8">
@@ -27,13 +27,13 @@ export default function ColorDesignTokens() {
 					{/* 👀 */}
 					<a
 						href="#"
-						className="bg-grey-90 text-grey-5 hover:bg-grey-100 mt-6 inline-block rounded px-4 py-2 text-sm font-medium"
+						className="bg-grey-80 text-grey-5 hover:bg-grey-100 mt-6 inline-block rounded px-4 py-2 text-sm font-medium"
 					>
 						Learn more
 					</a>
 				</div>
 				<div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
-					<div className="bg-highlight grid place-items-center rounded px-8 py-12">
+					<div className="bg-teal grid place-items-center rounded px-8 py-12">
 						{/* 👀 */}
 						<span className="text-grey-100/60 text-sm font-medium uppercase tracking-widest">
 							Conversion rate
@@ -43,7 +43,7 @@ export default function ColorDesignTokens() {
 							9.86%
 						</span>
 					</div>
-					<div className="bg-accent grid place-items-center rounded px-8 py-12">
+					<div className="bg-purple grid place-items-center rounded px-8 py-12">
 						{/* 👀 */}
 						<span className="text-grey-5/60 text-sm font-medium uppercase tracking-widest">
 							customers

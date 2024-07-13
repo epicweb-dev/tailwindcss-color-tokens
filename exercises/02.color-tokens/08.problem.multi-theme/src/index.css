@@ -5,8 +5,8 @@
 @layer base {
 	:root {
 		/* Raw color accessors */
-		--color-highlight: 173 100% 50%;
-		--color-accent: 263 100% 50%;
+		--color-teal: 173 100% 50%;
+		--color-purple: 263 100% 50%;
 
 		--color-grey-0: 0 0% 100%;
 		--color-grey-5: 0 0% 92%;
@@ -22,8 +22,8 @@
 		--color-grey-100: 0 0% 0%;
 
 		/* Semantic tokens */
-		--color-bg-highlight: var(--color-highlight);
-		--color-bg-accent: var(--color-accent);
+		--color-bg-highlight: var(--color-teal);
+		--color-bg-accent: var(--color-purple);
 
 		--color-bg-neutral: var(--color-grey-0);
 		--color-bg-neutral-inverted: var(--color-grey-100);
