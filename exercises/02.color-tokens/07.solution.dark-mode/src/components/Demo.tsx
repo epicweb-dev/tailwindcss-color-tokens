@@ -1,7 +1,7 @@
 export function Demo(props: React.ComponentProps<'div'>) {
 	return (
 		<div {...props}>
-			<div className="bg-subtle min-h-screen py-6 sm:py-12">
+			<div className="bg-subtle py-6 sm:py-12">
 				<div className="mx-auto max-w-4xl p-6 sm:p-8">
 					<div className="border-muted bg-neutral rounded border p-6 sm:p-8">
 						<p className="text-muted text-xs font-semibold uppercase tracking-widest">
@@ -19,7 +19,7 @@ export function Demo(props: React.ComponentProps<'div'>) {
 
 						<a
 							href="#"
-							className="bg-bold text-inverted hover:bg-neutral-inverted mt-6 rounded px-4 py-2 text-sm font-medium"
+							className="bg-bold text-inverted hover:bg-neutral-inverted mt-6 inline-block rounded px-4 py-2 text-sm font-medium"
 						>
 							Learn more
 						</a>
