@@ -13,11 +13,29 @@ Our project is already setup with Tailwind CSS v4.
 
 1. We've upgraded our Tailwind version and installed the new Tailwind CSS Vite plugin:
 
-<CodeFile file="./package.json" range="17,31" />
+```json filename=package.json start=17
+"@tailwindcss/vite": "^4.0.0-alpha.17",
+```
+
+```json filename=package.json start=31
+"tailwindcss": "^4.0.0-alpha.17",
+```
 
 2. We've registered the Vite plugin in <InlineFile file="vite.config.ts" />:
 
-<CodeFile file="./vite.config.ts" highlight="1,7" />
+```ts filename=vite.config.ts highlight="1,7"
+import tailwindVite from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [react(), tailwindVite()],
+	server: {
+		port: Number(process.env.PORT) || 3000,
+	},
+})
+```
 
 3. We've replaced the three `@tailwind` directives in <InlineFile file="src/index.css" /> with a single `@import` statement:
 
