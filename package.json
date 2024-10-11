@@ -4,7 +4,7 @@
   "epicshop": {
     "title": "Tailwind CSS Color Tokens 🎨",
     "subtitle": "Semantic, themable color design tokens in Tailwind CSS",
-    "githubRoot": "https://github.com/epicweb-dev/tailwindcss-color-tokens/blob/main",
+    "githubRepo": "https://github.com/epicweb-dev/tailwindcss-color-tokens",
     "instructor": {
       "name": "Simon Vrachliotis",
       "avatar": "/images/instructor.png",
