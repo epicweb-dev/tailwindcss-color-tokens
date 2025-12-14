@@ -4,6 +4,7 @@
     "@epic-web/workshop-app": "^6.45.7",
     "@epic-web/workshop-utils": "^6.45.7",
     "chokidar": "^3.6.0",
+    "epicshop": "^6.45.7",
     "execa": "^9.3.0",
     "fs-extra": "^11.2.0"
   }
