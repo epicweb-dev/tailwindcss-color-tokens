@@ -7,12 +7,13 @@ concurrency:
 on:
   push:
     branches:
-      - 'main'
-  pull_request:
-    branches:
-      - 'main'
+      - "main"
+  pull_request: {}
+
 jobs:
   setup:
+    name: 🔧 Setup
+    timeout-minutes: 10
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -24,7 +25,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: ▶️ Run setup script
         run: npm run setup
@@ -35,12 +36,35 @@ jobs:
       - name: ⬣ ESLint
         run: npm run lint
 
+  tests:
+    name: 🧪 Test
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    # Use continue-on-error to ensure this job doesn't fail the workflow
+    continue-on-error: true
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        id: run_tests
+        run: node ./epicshop/test.js ..s
+
   deploy:
     name: 🚀 Deploy
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     # only deploy main branch on pushes on non-forks
-    if:
-      ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' &&
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' &&
       github.repository_owner == 'epicweb-dev' }}
 
     steps:
@@ -51,7 +75,9 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@1.5
 
       - name: 🚀 Deploy
-        run: flyctl deploy --remote-only
+        run: flyctl deploy --remote-only --build-arg
+          EPICSHOP_GITHUB_REPO=https://github.com/${{ github.repository }}
+          --build-arg EPICSHOP_COMMIT_SHA=${{ github.sha }}
         working-directory: ./epicshop
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
