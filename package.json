@@ -5,6 +5,16 @@
     "title": "Tailwind CSS Color Tokens 🎨",
     "subtitle": "Semantic, themable color design tokens in Tailwind CSS",
     "githubRepo": "https://github.com/epicweb-dev/tailwindcss-color-tokens",
+    "product": {
+      "host": "www.epicweb.dev",
+      "slug": "tailwind-color-tokens",
+      "displayName": "EpicWeb.dev",
+      "displayNameShort": "Epic Web",
+      "discordChannelId": "1161045224907341972",
+      "discordTags": [
+        "1161046174439063593"
+      ]
+    },
     "instructor": {
       "name": "Simon Vrachliotis",
       "avatar": "/images/instructor.png",
